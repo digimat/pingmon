@@ -2,6 +2,7 @@
 
 import time
 import logging
+import logging.handlers
 
 import ping
 
@@ -14,7 +15,7 @@ class PingMon(object):
 		if not logfpath:
 			logfpath='/var/log/pingmon.log'
 
-		handler=logging.FileHandler(logfpath)
+		handler=logging.handlers.RotatingFileHandler(logfpath, maxBytes=20000, backupCount=10)
 		formatter=logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 		handler.setFormatter(formatter)
 
