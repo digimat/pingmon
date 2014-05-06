@@ -8,8 +8,8 @@ logger "Upgrading service [$SERVICE] via git if needed..."
 
 if [ -d $SERVICEPATH ]; then
 	cd $SERVICEPATH
-	git fetch origin
-	git reset --hard origin/master
+	git fetch origin > /dev/null
+	git reset --hard origin/master > /dev/null
 	 
 	if [ -f $SERVICEPATH/$SERVICE ]; then
 		logger "Launching service [$SERVICE]"

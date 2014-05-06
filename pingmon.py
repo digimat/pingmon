@@ -7,7 +7,6 @@ import logging.handlers
 # pip install ping
 import ping
 
-
 class PingMon(object):
 	def __init__(self, logfpath=None):
 		self._hosts=[]
