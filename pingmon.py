@@ -4,6 +4,7 @@ import time
 import logging
 import logging.handlers
 
+# pip install ping
 import ping
 
 
