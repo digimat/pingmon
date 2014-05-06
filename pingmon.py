@@ -35,7 +35,7 @@ class PingMon(object):
 		if self._hosts:
 			for host in self._hosts:
 				try:
-					(ploss, maxrt, meanrt)=ping.quiet_ping(host)
+					(ploss, maxrt, meanrt)=ping.quiet_ping(host, count=1)
 					#print "%s/%d/%d" % (host, ploss, maxrt)
 					if ploss==100:
 						self.logger.error('unreachable host [%s]' % host)
