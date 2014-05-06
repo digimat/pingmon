@@ -36,8 +36,10 @@ class PingMon(object):
 				try:
 					(ploss, maxrt, meanrt)=ping.quiet_ping(host)
 					#print "%s/%d/%d" % (host, ploss, maxrt)
-					if ploss>0:
-						self.logger.warning('partial ping occured for host [%s] loss:%d%% max:%dms mean:%dms' % (host, ploss, maxrt, meanrt))
+					if ploss==100:
+						self.logger.error('unreachable host [%s]' % host)
+					elif ploss>0:
+						self.logger.warning('partial ping for host [%s] loss:%d%% max:%dms mean:%dms' % (host, ploss, maxrt, meanrt))
 				except:
 					self.logger.error('exception occured while processing host %s' % host)
 
