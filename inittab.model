@@ -1,0 +1,1 @@
+pm:23:respawn:/bin/sh /home/pi/python/pingmon/service.launcher pingmon-i162.py
