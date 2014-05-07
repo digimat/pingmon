@@ -5,8 +5,6 @@ DEFAULTSERVICE=pingmon.py
 
 SERVICE=${1:-$DEFAULTSERVICE}
 
-echo "$SERVICE"
-
 if [ -d $SERVICEPATH ]; then
 	cd $SERVICEPATH
 	[ -f $SERVICEPATH/service.upgrade ] && . $SERVICEPATH/service.upgrade
