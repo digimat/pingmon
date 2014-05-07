@@ -5,6 +5,8 @@ DEFAULTSERVICE=pingmon.py
 
 SERVICE=${1:-$DEFAULTSERVICE}
 
+echo "$SERVICE"
+
 if [ -d $SERVICEPATH ]; then
 	if [ -f $SERVICEPATH/service.upgrade ]; then
 		. $SERVICEPATH/service.upgrade
@@ -16,5 +18,5 @@ if [ -d $SERVICEPATH ]; then
 	fi
 fi
 
-logger "$0:unable to find service [$SERVICE]"
+logger "Unable to find service [$SERVICE]"
 /bin/sleep 15
