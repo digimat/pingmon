@@ -8,6 +8,9 @@ if [ -n "$SERVICEPATH" ] && [ -d $SERVICEPATH ]; then
 		logger "${0}:${SERVICEPATH}:Launching GIT auto-upgrade job..."
 		git fetch origin > /dev/null
 		git reset --hard origin/master > /dev/null
+
+		# here by security
+		git pull > /dev/null
 		logger "${0}:${SERVICEPATH}:GIT auto-upgrade job done."
 	else
 		logger "${0}:${SERVICEPATH}:Upgrade procedure disabled by tag file"
