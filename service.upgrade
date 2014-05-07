@@ -1,19 +1,14 @@
 #!/bin/sh
 
-SERVICEPATH=$1
+SERVICEPATH=`pwd`
 
-if [ -n "$SERVICEPATH" ] && [ -d $SERVICEPATH ]; then
-	cd $SERVICEPATH
-	if [ ! -f ./disable.upgrade ]; then
-		logger "${SERVICEPATH}:Launching GIT auto-upgrade job..."
-		git fetch origin > /dev/null
-		git reset --hard origin/master > /dev/null
+if [ ! -f ./disable.upgrade ]; then
+	logger "${SERVICEPATH}:Launching GIT auto-upgrade job..."
+	git fetch origin > /dev/null
+	git reset --hard origin/master > /dev/null
 
-		# here by security
-		git pull > /dev/null
-		logger "${SERVICEPATH}:GIT auto-upgrade job done."
-	else
-		logger "${SERVICEPATH}:Upgrade procedure disabled by tag file"
-	fi
+	# here by security
+	git pull > /dev/null
+	logger "${SERVICEPATH}:GIT auto-upgrade job done."
 fi
 
