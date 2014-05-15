@@ -7,11 +7,17 @@ SERVICE=${1:-$DEFAULTSERVICE}
 
 if [ -d $SERVICEPATH ]; then
 	cd $SERVICEPATH
-	[ -f $SERVICEPATH/service.upgrade ] && . $SERVICEPATH/service.upgrade
 
-	if [ -f $SERVICEPATH/$SERVICE ]; then
-		logger "Launching service [$SERVICE]"
-		exec /usr/bin/python $SERVICEPATH/$SERVICE
+	if [ ! -f ./disable.launcher ]; then
+		[ -f $SERVICEPATH/service.upgrade ] && . $SERVICEPATH/service.upgrade
+
+		if [ -f $SERVICEPATH/$SERVICE ]; then
+			logger "Launching service [$SERVICE]"
+			exec /usr/bin/python $SERVICEPATH/$SERVICE
+		fi
+	else
+		logger "Service [$SERVICE] currently disabled"
+		/bin/sleep 300
 	fi
 fi
 

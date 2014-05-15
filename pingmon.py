@@ -15,7 +15,7 @@ class PingMon(object):
 		if not logfpath:
 			logfpath='/var/log/pingmon.log'
 
-		handler=logging.handlers.RotatingFileHandler(logfpath, maxBytes=20000, backupCount=10)
+		handler=logging.handlers.RotatingFileHandler(logfpath, maxBytes=200000, backupCount=10)
 		formatter=logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 		handler.setFormatter(formatter)
 
